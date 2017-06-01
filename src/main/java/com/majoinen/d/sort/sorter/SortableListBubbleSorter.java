@@ -41,9 +41,18 @@ public class SortableListBubbleSorter<T extends Comparable<T>> extends
     @Override
     public boolean singleIteration(int iteration, SortableList<T> list,
       Comparator<T> comparator) {
-        for (int i = 0; i < list.size() - 1; i++) {
-            if(list.get(i).compareTo(list.get(i+1)) > 0) {
-                Collections.swap(list, i, i+1);
+        // Loop through all elements, stopping at previously sorted elements
+        for (int i = 0; i < list.size() - 1 - iteration; i++) {
+            // Swap when needed to make largest element rise to top
+            if(comparator != null) {
+                if(comparator.compare(list.get(i), list.get(i+1)) > 0) {
+                    Collections.swap(list, i, i + 1);
+                }
+            }
+            else {
+                if(list.get(i).compareTo(list.get(i+1)) > 0) {
+                    Collections.swap(list, i, i+1);
+                }
             }
         }
         return false;

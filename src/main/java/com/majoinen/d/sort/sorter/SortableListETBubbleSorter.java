@@ -42,12 +42,23 @@ public class SortableListETBubbleSorter<T extends Comparable<T>> extends
     public boolean singleIteration(int iteration, SortableList<T> list,
       Comparator<T> comparator) {
         int swaps = 0;
-        for (int i = 0; i < list.size() - 1; i++) {
-            if(list.get(i).compareTo(list.get(i+1)) > 0) {
-                Collections.swap(list, i, i+1);
-                swaps++;
+        // Loop through all elements, stopping at previously sorted elements
+        for (int i = 0; i < list.size() - 1 - iteration; i++) {
+            // Swap when needed to make largest element rise to top
+            if(comparator != null) {
+                if(comparator.compare(list.get(i), list.get(i+1)) > 0) {
+                    Collections.swap(list, i, i + 1);
+                    swaps++;
+                }
+            }
+            else {
+                if(list.get(i).compareTo(list.get(i+1)) > 0) {
+                    Collections.swap(list, i, i+1);
+                    swaps++;
+                }
             }
         }
+        // If no swaps were done on an iteration, terminate early
         return swaps == 0;
     }
 }
