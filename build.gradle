@@ -1,3 +1,4 @@
+apply plugin: "jacoco"
 apply plugin: "java"            // Apply the java plugin to add support for Java
 apply plugin: "org.sonarqube"   // Apply SonarQube plugin
 
@@ -48,3 +49,12 @@ sonarqube {
 test {
     ignoreFailures = true
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+test.finalizedBy(project.tasks.jacocoTestReport)
