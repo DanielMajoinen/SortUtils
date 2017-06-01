@@ -1,4 +1,4 @@
-package com.majoinen.d.sort.util;
+package com.majoinen.d.sort.sorter;
 
 /**
  * Enum for all sorting algorithms available.
@@ -6,6 +6,6 @@ package com.majoinen.d.sort.util;
  * @author Daniel Majoinen
  * @version 1.0, 1/6/17
  */
-public enum SortAlgorithm {
+public enum SorterAlgorithm {
     SELECTION, BUBBLE
 }

@@ -1,1 +1,1 @@
-package com.majoinen.d.sort.util.sorter;
+package com.majoinen.d.sort.sorter;

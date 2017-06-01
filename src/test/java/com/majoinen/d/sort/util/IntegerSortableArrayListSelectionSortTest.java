@@ -1,5 +1,6 @@
 package com.majoinen.d.sort.util;
 
+import com.majoinen.d.sort.sorter.SorterAlgorithm;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,31 +39,31 @@ public class IntegerSortableArrayListSelectionSortTest extends IntegerSortableLi
 
     @Test
     public void sortAll() {
-        list.sort(SortAlgorithm.SELECTION);
+        list.sort(SorterAlgorithm.SELECTION);
         assertTrue(assertAllTrue(list, 1,2,3,4,5));
     }
 
     @Test
     public void sort1Iteration() {
-        list.sort(1, SortAlgorithm.SELECTION);
+        list.sort(1, SorterAlgorithm.SELECTION);
         assertTrue(assertAllTrue(list, 1,3,5,2,4));
     }
 
     @Test
     public void sort2Iterations() {
-        list.sort(2, SortAlgorithm.SELECTION);
+        list.sort(2, SorterAlgorithm.SELECTION);
         assertTrue(assertAllTrue(list, 1,2,5,3,4));
     }
 
     @Test
     public void sort3Iterations() {
-        list.sort(3, SortAlgorithm.SELECTION);
+        list.sort(3, SorterAlgorithm.SELECTION);
         assertTrue(assertAllTrue(list, 1,2,3,5,4));
     }
 
     @Test
     public void sort4Iterations() {
-        list.sort(4, SortAlgorithm.SELECTION);
+        list.sort(4, SorterAlgorithm.SELECTION);
         assertTrue(assertAllTrue(list, 1,2,3,4,5));
     }
 }

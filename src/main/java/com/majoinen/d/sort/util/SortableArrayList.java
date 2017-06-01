@@ -1,5 +1,6 @@
 package com.majoinen.d.sort.util;
 
+import com.majoinen.d.sort.sorter.SorterAlgorithm;
 import com.majoinen.d.sort.sorter.SortableListBubbleSorter;
 import com.majoinen.d.sort.sorter.SortableListSelectionSorter;
 import com.majoinen.d.sort.sorter.Sorter;
@@ -11,7 +12,7 @@ import java.util.List;
 
 /**
  * <p>SortableArrayList is an ArrayList with the added ability to sort with any
- * algorithm in SortAlgorithm. It has the added ability to stop sorting after a
+ * algorithm in SorterAlgorithm. It has the added ability to stop sorting after a
  * specified amount of iterations, as well as specifying a comparator to
  * handle order when sorting.</p>
  *
@@ -51,7 +52,7 @@ public class SortableArrayList<T extends Comparable<T>> extends ArrayList<T>
      * @param algorithm The algorithm to use when sorting.
      */
     @Override
-    public void sort(SortAlgorithm algorithm) {
+    public void sort(SorterAlgorithm algorithm) {
         Sorter<T> sorter = getAppropriateSorter(algorithm);
         sorter.sort(this);
     }
@@ -63,15 +64,15 @@ public class SortableArrayList<T extends Comparable<T>> extends ArrayList<T>
      * @param algorithm The algorithm to use when sorting.
      */
     @Override
-    public void sort(int iterations, SortAlgorithm algorithm) {
+    public void sort(int iterations, SorterAlgorithm algorithm) {
         Sorter<T> sorter = getAppropriateSorter(algorithm);
         sorter.sort(iterations,this);
     }
 
     // TODO: Abstract to own SorterBuilder
-    private Sorter<T> getAppropriateSorter(SortAlgorithm algorithm) {
+    private Sorter<T> getAppropriateSorter(SorterAlgorithm algorithm) {
         if(algorithm == null)
-            throw new NullPointerException("SortAlgorithm cannot be null");
+            throw new NullPointerException("SorterAlgorithm cannot be null");
 
         switch (algorithm) {
             case SELECTION:
