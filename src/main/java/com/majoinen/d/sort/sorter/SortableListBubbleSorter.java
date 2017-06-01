@@ -15,10 +15,9 @@ import java.util.Comparator;
  * last element. Eventually second largest element is at the 2nd last element.
  * 3. Repeat until all elements are sorted.</p>
  *
- * @param <T> The type of objects to order.
- *
  * @author Daniel Majoinen
  * @version 1.0, 1/6/17
+ * @param <T> The type of objects to order.
  */
 public class SortableListBubbleSorter<T extends Comparable<T>> extends
   AbstractSorter<T> {

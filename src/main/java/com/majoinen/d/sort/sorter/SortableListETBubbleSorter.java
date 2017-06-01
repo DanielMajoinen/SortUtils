@@ -17,10 +17,9 @@ import java.util.Comparator;
  * 4. If any iteration it is the case that no pairs are required to
  * be swapped, the sorting is done and will terminate early.</p>
  *
- * @param <T> The type of objects to order.
- *
  * @author Daniel Majoinen
  * @version 1.0, 1/6/17
+ * @param <T> The type of objects to order.
  */
 public class SortableListETBubbleSorter<T extends Comparable<T>> extends
   AbstractSorter<T> {
