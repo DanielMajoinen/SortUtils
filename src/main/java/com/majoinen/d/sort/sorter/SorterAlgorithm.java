@@ -7,5 +7,5 @@ package com.majoinen.d.sort.sorter;
  * @version 1.0, 1/6/17
  */
 public enum SorterAlgorithm {
-    SELECTION, BUBBLE
+    SELECTION, BUBBLE, ET_BUBBLE
 }

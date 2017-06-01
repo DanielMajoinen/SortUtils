@@ -1,9 +1,6 @@
 package com.majoinen.d.sort.util;
 
-import com.majoinen.d.sort.sorter.SorterAlgorithm;
-import com.majoinen.d.sort.sorter.SortableListBubbleSorter;
-import com.majoinen.d.sort.sorter.SortableListSelectionSorter;
-import com.majoinen.d.sort.sorter.Sorter;
+import com.majoinen.d.sort.sorter.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -85,6 +82,11 @@ public class SortableArrayList<T extends Comparable<T>> extends ArrayList<T>
                     return new SortableListBubbleSorter<>();
                 else
                     return new SortableListBubbleSorter<>(comparator);
+            case ET_BUBBLE:
+                if(comparator == null)
+                    return new SortableListETBubbleSorter<>();
+                else
+                    return new SortableListETBubbleSorter<>(comparator);
             default:
                 throw new NullPointerException("Algorithm does not exist");
         }
