@@ -1,8 +1,6 @@
 package com.majoinen.d.sort.sorter;
 
 import com.majoinen.d.sort.util.SortableList;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -26,9 +24,6 @@ import java.util.Comparator;
  */
 public class SortableListETBubbleSorter<T extends Comparable<T>> extends
   AbstractSorter<T> {
-
-    private static final Logger logger =
-      LogManager.getLogger(SortableListETBubbleSorter.class);
 
     public SortableListETBubbleSorter() {
         // Empty constructor for when no default comparator is used

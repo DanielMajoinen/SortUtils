@@ -1,8 +1,6 @@
 package com.majoinen.d.sort.sorter;
 
 import com.majoinen.d.sort.util.SortableList;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Comparator;
 
@@ -14,9 +12,6 @@ import java.util.Comparator;
  * @version 0.1, 1/6/17
  */
 public abstract class AbstractSorter<T> implements Sorter<T> {
-
-    private static final Logger logger =
-      LogManager.getLogger(AbstractSorter.class);
 
     private Comparator<T> defaultComparator;
 
