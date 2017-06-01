@@ -1,6 +1,8 @@
-package com.majoinen.d.sort.util;
+package com.majoinen.d.sort.sorter;
 
-import com.majoinen.d.sort.sorter.SortableListSelectionSorter;
+import com.majoinen.d.sort.util.IntegerSortableListTest;
+import com.majoinen.d.sort.util.SortableArrayList;
+import com.majoinen.d.sort.util.SortableList;
 import org.junit.Before;
 import org.junit.Test;
 
