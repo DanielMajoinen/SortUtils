@@ -74,10 +74,9 @@ public abstract class AbstractSorter<T> implements Sorter<T> {
     @Override
     public void sort(int totalIterations, SortableList<T> list,
       Comparator<T> comparator) {
-        logger.info("Sorting list using SelectionSort");
-        list.print();
         for(int iteration = 0; iteration < totalIterations; iteration++) {
             logger.info("Iteration: " + (iteration + 1));
+            list.print();
             if(comparator != null) {
                 singleIteration(iteration, list, comparator);
             } else if(getDefaultComparator() != null) {
@@ -85,7 +84,6 @@ public abstract class AbstractSorter<T> implements Sorter<T> {
             } else {
                 singleIteration(iteration, list, null);
             }
-            list.print();
         }
     }
 
