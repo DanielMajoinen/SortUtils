@@ -1,5 +1,6 @@
-package com.majoinen.d.sort.sorter;
+package com.majoinen.d.sort.sorter.bruteforce;
 
+import com.majoinen.d.sort.sorter.bruteforce.SortableListETBubbleSorter;
 import com.majoinen.d.sort.util.IntegerSortableListTest;
 import com.majoinen.d.sort.util.SortableArrayList;
 import com.majoinen.d.sort.util.SortableList;
@@ -9,21 +10,21 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Unit tests for the Bubble Sort algorithm, using Integer as the element
- * type.
+ * Unit tests for the Early Termination Bubble Sort algorithm, using Integer as
+ * the element type.
  *
  * @author Daniel Majoinen
  * @version 1.0, 1/6/17
  */
-public class IntegerSortableListBubbleSorterTest extends IntegerSortableListTest {
+public class IntegerSortableListETBubbleSorterTest extends IntegerSortableListTest {
 
     private SortableList<Integer> list;
-    private SortableListBubbleSorter<Integer> sorter;
+    private SortableListETBubbleSorter<Integer> sorter;
 
     @Before
     public void beforeEachTest() {
         list = new SortableArrayList<>(INT_LIST_1_TO_5); // 3, 1, 5, 2, 4
-        sorter = new SortableListBubbleSorter<>();
+        sorter = new SortableListETBubbleSorter<>();
     }
 
     @Test

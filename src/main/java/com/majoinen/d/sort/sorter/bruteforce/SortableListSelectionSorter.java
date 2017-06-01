@@ -1,5 +1,6 @@
-package com.majoinen.d.sort.sorter;
+package com.majoinen.d.sort.sorter.bruteforce;
 
+import com.majoinen.d.sort.sorter.AbstractSorter;
 import com.majoinen.d.sort.util.SortableList;
 
 import java.util.Collections;
