@@ -36,10 +36,11 @@ public class SortableListSelectionSorter<T extends Comparable<T>> extends
      * @param iteration The current iteration count.
      * @param list The list of data to sort.
      * @param comparator An optional comparator to define order.
-     * @return Returns the index of the element to swap with.
+     * @return As there is no early termination ability, this always returns
+     \ FALSE.
      */
     @Override
-    public void singleIteration(int iteration, SortableList<T> list,
+    public boolean singleIteration(int iteration, SortableList<T> list,
       Comparator<T> comparator) {
         // Set smallestIndex to the first item we check each iteration
         int smallestIndex = iteration;
@@ -64,13 +65,8 @@ public class SortableListSelectionSorter<T extends Comparable<T>> extends
 
         // If the swap index is not already in the correct position, swap...
         if(smallestIndex != iteration) {
-            logger.info(String.format("Swapping %s with %s",
-              list.get(smallestIndex), list.get(iteration)));
             Collections.swap(list, smallestIndex, iteration);
         }
-        // ...Otherwise do nothing
-        else {
-            logger.info("No need to swap this iteration");
-        }
+        return false;
     }
 }

@@ -41,22 +41,17 @@ public class SortableListBubbleSorter<T extends Comparable<T>> extends
      * @param iteration The current iteration count.
      * @param list The list of data to sort.
      * @param comparator An optional comparator to define order.
+     * @return As there is no early termination ability, this always returns
+    \ FALSE.
      */
     @Override
-    public void singleIteration(int iteration, SortableList<T> list,
+    public boolean singleIteration(int iteration, SortableList<T> list,
       Comparator<T> comparator) {
         for (int i = 0; i < list.size() - 1; i++) {
             if(list.get(i).compareTo(list.get(i+1)) > 0) {
-                logger.info(String.format("Swapping %s with %s",
-                  list.get(i), list.get(i+1)));
                 Collections.swap(list, i, i+1);
-                list.print();
-            }
-            else {
-                logger.info(String.format("No need to swap %s and %s",
-                  list.get(i), list.get(i+1)));
-                list.print();
             }
         }
+        return false;
     }
 }

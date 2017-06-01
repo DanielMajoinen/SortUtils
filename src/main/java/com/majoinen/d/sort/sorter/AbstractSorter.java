@@ -74,16 +74,20 @@ public abstract class AbstractSorter<T> implements Sorter<T> {
     @Override
     public void sort(int totalIterations, SortableList<T> list,
       Comparator<T> comparator) {
+        Comparator<T> c;
+        // Define appropriate comparator
+        if(comparator != null) {
+            c = comparator;
+        } else if(getDefaultComparator() != null) {
+            c = getDefaultComparator();
+        } else {
+            c = null;
+        }
+
+        // Loop for desired iteration count, unless early termination
         for(int iteration = 0; iteration < totalIterations; iteration++) {
-            logger.info("Iteration: " + (iteration + 1));
-            list.print();
-            if(comparator != null) {
-                singleIteration(iteration, list, comparator);
-            } else if(getDefaultComparator() != null) {
-                singleIteration(iteration, list, getDefaultComparator());
-            } else {
-                singleIteration(iteration, list, null);
-            }
+            if(singleIteration(iteration, list, c))
+                break;
         }
     }
 
@@ -93,6 +97,6 @@ public abstract class AbstractSorter<T> implements Sorter<T> {
      * @param list The list of data to sort.
      * @param comparator An optional comparator to define order.
      */
-    public abstract void singleIteration(int iteration, SortableList<T> list,
+    public abstract boolean singleIteration(int iteration, SortableList<T> list,
       Comparator<T> comparator);
 }
