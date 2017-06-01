@@ -7,18 +7,18 @@ package com.majoinen.d.sort.util;
  * @author Daniel Majoinen
  * @version 1.0, 1/6/17
  */
-public interface Sorter {
+public interface Sorter<T> {
 
     /**
      * Sort the entire specified SortableList.
      * @param list The SortableList to sort.
      */
-    void sort(SortableList list);
+    void sort(SortableList<T> list);
 
     /**
      * Sort the specified SortableList for the specified amount of iterations.
      * @param iterations How many iterations to complete before stopping.
      * @param list The SortableList to sort.
      */
-    void sort(int iterations, SortableList list);
+    void sort(int iterations, SortableList<T> list);
 }
