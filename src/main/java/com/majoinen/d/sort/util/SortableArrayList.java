@@ -12,8 +12,8 @@ import java.util.List;
 
 /**
  * <p>SortableArrayList is an ArrayList with the added ability to sort with any
- * algorithm in SorterAlgorithm. It has the added ability to stop sorting after a
- * specified amount of iterations, as well as specifying a comparator to
+ * algorithm in SorterAlgorithm. It has the added ability to stop sorting after
+ * a specified amount of iterations, as well as specifying a comparator to
  * handle order when sorting.</p>
  *
  * <p>This was created as revision for my algorithms course exam - Mid 2017.</p>
