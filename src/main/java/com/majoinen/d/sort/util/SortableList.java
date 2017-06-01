@@ -23,4 +23,9 @@ public interface SortableList<T> extends List<T> {
      * @param algorithm The algorithm to use when sorting.
      */
     void sort(int iterations, SortAlgorithm algorithm);
+
+    /**
+     * Prints each element of the list in its current order.
+     */
+    void print();
 }
