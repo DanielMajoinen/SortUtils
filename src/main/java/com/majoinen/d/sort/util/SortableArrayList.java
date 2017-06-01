@@ -1,5 +1,8 @@
 package com.majoinen.d.sort.util;
 
+import com.majoinen.d.sort.sorter.SortableListBubbleSorter;
+import com.majoinen.d.sort.sorter.SortableListSelectionSorter;
+import com.majoinen.d.sort.sorter.Sorter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

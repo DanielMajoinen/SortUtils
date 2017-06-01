@@ -1,5 +1,6 @@
 package com.majoinen.d.sort.util;
 
+import com.majoinen.d.sort.sorter.SortableListSelectionSorter;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,5 +1,6 @@
-package com.majoinen.d.sort.util;
+package com.majoinen.d.sort.sorter;
 
+import com.majoinen.d.sort.util.SortableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
