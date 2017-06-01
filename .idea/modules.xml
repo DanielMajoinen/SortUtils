@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SortUtils.iml" filepath="$PROJECT_DIR$/.idea/modules/SortUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SortUtils_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SortUtils_main.iml" group="SortUtils" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SortUtils_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SortUtils_test.iml" group="SortUtils" />
+    </modules>
+  </component>
+</project>
