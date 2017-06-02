@@ -3,9 +3,9 @@ package com.majoinen.d.sort.sorter;
 import com.majoinen.d.sort.sorter.bruteforce.BubbleSorter;
 import com.majoinen.d.sort.sorter.bruteforce.ETBubbleSorter;
 import com.majoinen.d.sort.sorter.bruteforce.SelectionSorter;
+import com.majoinen.d.sort.util.SerializableComparator;
 
 import java.io.Serializable;
-import java.util.Comparator;
 
 /**
  * SorterFactory's single purpose is to instantiate an appropriate sorter for
@@ -17,13 +17,13 @@ import java.util.Comparator;
 public class SorterFactory<T extends Comparable<T>> implements Serializable {
 
     private static final long serialVersionUID = 1074200460058548317L;
-    private Comparator<T> comparator;
+    private SerializableComparator<T> comparator;
 
     public SorterFactory() {
         // Empty constructor for when no comparator is used
     }
 
-    public SorterFactory(Comparator<T> comparator) {
+    public SorterFactory(SerializableComparator<T> comparator) {
         this.comparator = comparator;
     }
 
