@@ -4,6 +4,7 @@ import com.majoinen.d.sort.sorter.bruteforce.BubbleSorter;
 import com.majoinen.d.sort.sorter.bruteforce.ETBubbleSorter;
 import com.majoinen.d.sort.sorter.bruteforce.SelectionSorter;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
@@ -13,8 +14,9 @@ import java.util.Comparator;
  * @author Daniel Majoinen
  * @version 0.1, 2/6/17
  */
-public class SorterFactory<T extends Comparable<T>> {
+public class SorterFactory<T extends Comparable<T>> implements Serializable {
 
+    private static final long serialVersionUID = 1074200460058548317L;
     private Comparator<T> comparator;
 
     public SorterFactory() {
