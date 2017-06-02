@@ -25,6 +25,6 @@ public class IntegerSortableArrayListBubbleSortTest
     @Test
     public void sortAll() {
         list.sort(SorterAlgorithm.BUBBLE);
-        assertTrue(assertAllTrue(list, 5,4,3,2,1));
+        assertTrue(assertAllTrue(list, 1,2,3,4,5));
     }
 }
