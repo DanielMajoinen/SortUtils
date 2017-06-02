@@ -1,9 +1,8 @@
 package com.majoinen.d.sort.util;
 
-import com.majoinen.d.sort.sorter.*;
-import com.majoinen.d.sort.sorter.bruteforce.BubbleSorter;
-import com.majoinen.d.sort.sorter.bruteforce.ETBubbleSorter;
-import com.majoinen.d.sort.sorter.bruteforce.SelectionSorter;
+import com.majoinen.d.sort.sorter.Sorter;
+import com.majoinen.d.sort.sorter.SorterAlgorithm;
+import com.majoinen.d.sort.sorter.SorterFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,24 +26,25 @@ public class SortableArrayList<T extends Comparable<T>> extends ArrayList<T>
     private static final Logger logger =
       LogManager.getLogger(SortableArrayList.class);
 
-    private SerializableComparator<T> comparator;
+    private SorterFactory<T> sorterFactory;
 
     public SortableArrayList() {
-        // Empty constructor for when no comparator is used
-    }
-
-    public SortableArrayList(SerializableComparator<T> comparator) {
-        this.comparator = comparator;
+        sorterFactory = new SorterFactory<>();
     }
 
     public SortableArrayList(List<T> list) {
         this.addAll(list);
+        sorterFactory = new SorterFactory<>();
+    }
+
+    public SortableArrayList(SerializableComparator<T> comparator) {
+        sorterFactory = new SorterFactory<>(comparator);
     }
 
     public SortableArrayList(List<T> list,
       SerializableComparator<T> comparator) {
         this.addAll(list);
-        this.comparator = comparator;
+        sorterFactory = new SorterFactory<>(comparator);
     }
 
     /**
@@ -53,7 +53,7 @@ public class SortableArrayList<T extends Comparable<T>> extends ArrayList<T>
      */
     @Override
     public void sort(SorterAlgorithm algorithm) {
-        Sorter<T> sorter = getAppropriateSorter(algorithm);
+        Sorter<T> sorter = sorterFactory.getSorter(algorithm);
         sorter.sort(this);
     }
 
@@ -65,34 +65,8 @@ public class SortableArrayList<T extends Comparable<T>> extends ArrayList<T>
      */
     @Override
     public void sort(int iterations, SorterAlgorithm algorithm) {
-        Sorter<T> sorter = getAppropriateSorter(algorithm);
+        Sorter<T> sorter = sorterFactory.getSorter(algorithm);
         sorter.sort(iterations,this);
-    }
-
-    // TODO: Abstract to own SorterBuilder
-    private Sorter<T> getAppropriateSorter(SorterAlgorithm algorithm) {
-        if(algorithm == null)
-            throw new NullPointerException("SorterAlgorithm cannot be null");
-
-        switch (algorithm) {
-            case SELECTION:
-                if(comparator == null)
-                    return new SelectionSorter<>();
-                else
-                    return new SelectionSorter<>(comparator);
-            case BUBBLE:
-                if(comparator == null)
-                    return new BubbleSorter<>();
-                else
-                    return new BubbleSorter<>(comparator);
-            case ET_BUBBLE:
-                if(comparator == null)
-                    return new ETBubbleSorter<>();
-                else
-                    return new ETBubbleSorter<>(comparator);
-            default:
-                throw new NullPointerException("Algorithm does not exist");
-        }
     }
 
     /**
