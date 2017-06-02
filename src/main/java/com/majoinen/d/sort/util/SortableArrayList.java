@@ -58,6 +58,19 @@ public class SortableArrayList<T extends Comparable<T>> extends ArrayList<T>
     }
 
     /**
+     * Sort the entire list using the specified algorithm and comparator.
+     * Specifying a comparator overrides the default.
+     * @param algorithm The algorithm to use when sorting.
+     * @param comparator The comparator to use when sorting - Overrides default.
+     */
+    @Override
+    public void sort(SorterAlgorithm algorithm,
+      SerializableComparator<T> comparator) {
+        Sorter<T> sorter = sorterFactory.getSorter(algorithm);
+        sorter.sort(this, comparator);
+    }
+
+    /**
      * Sort the list up to a specific number of iterations using the supplied
      * algorithm.
      * @param iterations Number of sorting iterations to complete.
@@ -67,6 +80,20 @@ public class SortableArrayList<T extends Comparable<T>> extends ArrayList<T>
     public void sort(int iterations, SorterAlgorithm algorithm) {
         Sorter<T> sorter = sorterFactory.getSorter(algorithm);
         sorter.sort(iterations,this);
+    }
+
+    /**
+     * Sort the list up to a specific number of iterations using the supplied
+     * algorithm and comparator. Specifying a comparator overrides the default.
+     * @param iterations Number of sorting iterations to complete.
+     * @param algorithm The algorithm to use when sorting.
+     * @param comparator The comparator to use when sorting - Overrides default.
+     */
+    @Override
+    public void sort(int iterations, SorterAlgorithm algorithm,
+      SerializableComparator<T> comparator) {
+        Sorter<T> sorter = sorterFactory.getSorter(algorithm);
+        sorter.sort(iterations,this, comparator);
     }
 
     /**
