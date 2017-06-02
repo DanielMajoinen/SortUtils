@@ -37,25 +37,29 @@ public class SorterFactory<T extends Comparable<T>> implements Serializable {
         if(algorithm == null)
             throw new NullPointerException("SorterAlgorithm cannot be null");
 
+        Sorter<T> sorter;
         switch (algorithm) {
             case SELECTION:
                 if (comparator == null)
-                    return new SelectionSorter<>();
+                    sorter = new SelectionSorter<>();
                 else
-                    return new SelectionSorter<>(comparator);
+                    sorter = new SelectionSorter<>(comparator);
+                break;
             case BUBBLE:
                 if (comparator == null)
-                    return new BubbleSorter<>();
+                    sorter = new BubbleSorter<>();
                 else
-                    return new BubbleSorter<>(comparator);
+                    sorter = new BubbleSorter<>(comparator);
+                break;
             case ET_BUBBLE:
                 if (comparator == null)
-                    return new ETBubbleSorter<>();
+                    sorter = new ETBubbleSorter<>();
                 else
-                    return new ETBubbleSorter<>(comparator);
+                    sorter = new ETBubbleSorter<>(comparator);
+                break;
             default:
-                throw new NullPointerException("Algorithm does not exist");
+                throw new NullPointerException("Algorithm not found");
         }
+        return sorter;
     }
-
 }
