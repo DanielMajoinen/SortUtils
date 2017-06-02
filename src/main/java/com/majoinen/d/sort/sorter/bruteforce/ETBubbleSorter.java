@@ -46,20 +46,14 @@ public class ETBubbleSorter<T extends Comparable<T>> extends
         // Loop through all elements, stopping at previously sorted elements
         for (int i = 0; i < list.size() - 1 - iteration; i++) {
             // Swap when needed to make largest element rise to top
-            if(comparator != null) {
-                if(comparator.compare(list.get(i), list.get(i+1)) > 0) {
-                    Collections.swap(list, i, i + 1);
-                    swaps++;
-                }
-            }
-            else {
-                if(list.get(i).compareTo(list.get(i+1)) > 0) {
-                    Collections.swap(list, i, i+1);
-                    swaps++;
-                }
+            if(greaterThan(list.get(i), list.get(i + 1), comparator)) {
+                Collections.swap(list, i, i + 1);
+                swaps++;
             }
         }
-        // If no swaps were done on an iteration, terminate early
-        return swaps == 0;
+        // If no swaps were done on an iteration, terminate early OR
+        // Stop at n - 2 iterations, where n is the size of input
+        // Note: iteration count is zero-based, hence the + 1
+        return swaps == 0 || iteration + 1 == list.size() - 2;
     }
 }

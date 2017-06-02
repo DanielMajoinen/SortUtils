@@ -44,18 +44,13 @@ public class BubbleSorter<T extends Comparable<T>> extends
       Comparator<T> comparator) {
         // Loop through all elements, stopping at previously sorted elements
         for (int i = 0; i < list.size() - 1 - iteration; i++) {
-            // Swap when needed to make largest element rise to top
-            if(comparator != null) {
-                if(comparator.compare(list.get(i), list.get(i+1)) > 0) {
-                    Collections.swap(list, i, i + 1);
-                }
-            }
-            else {
-                if(list.get(i).compareTo(list.get(i+1)) > 0) {
-                    Collections.swap(list, i, i+1);
-                }
+            // Swap when next element is smaller than current
+            if(greaterThan(list.get(i), list.get(i + 1), comparator)) {
+                Collections.swap(list, i, i + 1);
             }
         }
-        return false;
+        // Stop at n - 2 iterations, where n is the size of input
+        // Note: iteration count is zero-based, hence the + 1
+        return iteration + 1 == list.size() - 2;
     }
 }
