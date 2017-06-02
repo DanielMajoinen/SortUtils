@@ -11,7 +11,8 @@ import java.util.Comparator;
  * @author Daniel Majoinen
  * @version 0.1, 1/6/17
  */
-public abstract class AbstractSorter<T> implements Sorter<T> {
+public abstract class AbstractSorter<T extends Comparable<T>> implements
+  Sorter<T> {
 
     private Comparator<T> defaultComparator;
 
@@ -94,4 +95,19 @@ public abstract class AbstractSorter<T> implements Sorter<T> {
      */
     public abstract boolean singleIteration(int iteration, SortableList<T> list,
       Comparator<T> comparator);
+
+
+    /**
+     * Helper method to compare two objects, with or without a comparator.
+     * @param a The first object to compare.
+     * @param b The second object to compare.
+     * @param comparator The optional comparator to define the comparison.
+     * @return Returns TRUE if a compares to greater than b, or FALSE otherwise.
+     */
+    protected boolean greaterThan(T a, T b, Comparator<T> comparator) {
+        if(comparator != null)
+            return comparator.compare(a, b) > 0;
+        else
+            return a.compareTo(b) > 0;
+    }
 }
