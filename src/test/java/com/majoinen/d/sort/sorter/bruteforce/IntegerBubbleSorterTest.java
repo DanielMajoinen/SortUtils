@@ -1,6 +1,5 @@
 package com.majoinen.d.sort.sorter.bruteforce;
 
-import com.majoinen.d.sort.sorter.bruteforce.SortableListBubbleSorter;
 import com.majoinen.d.sort.util.IntegerSortableListTest;
 import com.majoinen.d.sort.util.SortableArrayList;
 import com.majoinen.d.sort.util.SortableList;
@@ -16,15 +15,15 @@ import static org.junit.Assert.assertTrue;
  * @author Daniel Majoinen
  * @version 1.0, 1/6/17
  */
-public class IntegerSortableListBubbleSorterTest extends IntegerSortableListTest {
+public class IntegerBubbleSorterTest extends IntegerSortableListTest {
 
     private SortableList<Integer> list;
-    private SortableListBubbleSorter<Integer> sorter;
+    private BubbleSorter<Integer> sorter;
 
     @Before
     public void beforeEachTest() {
         list = new SortableArrayList<>(INT_LIST_1_TO_5); // 3, 1, 5, 2, 4
-        sorter = new SortableListBubbleSorter<>();
+        sorter = new BubbleSorter<>();
     }
 
     @Test

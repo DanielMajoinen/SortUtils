@@ -16,14 +16,14 @@ import java.util.Comparator;
  * 3. Repeat until sorted.</p>
  * @param <T> The type of objects to order.
  */
-public class SortableListSelectionSorter<T extends Comparable<T>> extends
+public class SelectionSorter<T extends Comparable<T>> extends
   AbstractSorter<T> {
 
-    public SortableListSelectionSorter() {
+    public SelectionSorter() {
         // Empty constructor for when no default comparator is used
     }
 
-    public SortableListSelectionSorter(Comparator<T> comparator) {
+    public SelectionSorter(Comparator<T> comparator) {
         super(comparator);
     }
 

@@ -1,9 +1,9 @@
 package com.majoinen.d.sort.util;
 
 import com.majoinen.d.sort.sorter.*;
-import com.majoinen.d.sort.sorter.bruteforce.SortableListBubbleSorter;
-import com.majoinen.d.sort.sorter.bruteforce.SortableListETBubbleSorter;
-import com.majoinen.d.sort.sorter.bruteforce.SortableListSelectionSorter;
+import com.majoinen.d.sort.sorter.bruteforce.BubbleSorter;
+import com.majoinen.d.sort.sorter.bruteforce.ETBubbleSorter;
+import com.majoinen.d.sort.sorter.bruteforce.SelectionSorter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -77,19 +77,19 @@ public class SortableArrayList<T extends Comparable<T>> extends ArrayList<T>
         switch (algorithm) {
             case SELECTION:
                 if(comparator == null)
-                    return new SortableListSelectionSorter<>();
+                    return new SelectionSorter<>();
                 else
-                    return new SortableListSelectionSorter<>(comparator);
+                    return new SelectionSorter<>(comparator);
             case BUBBLE:
                 if(comparator == null)
-                    return new SortableListBubbleSorter<>();
+                    return new BubbleSorter<>();
                 else
-                    return new SortableListBubbleSorter<>(comparator);
+                    return new BubbleSorter<>(comparator);
             case ET_BUBBLE:
                 if(comparator == null)
-                    return new SortableListETBubbleSorter<>();
+                    return new ETBubbleSorter<>();
                 else
-                    return new SortableListETBubbleSorter<>(comparator);
+                    return new ETBubbleSorter<>(comparator);
             default:
                 throw new NullPointerException("Algorithm does not exist");
         }

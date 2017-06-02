@@ -15,15 +15,15 @@ import static org.junit.Assert.assertTrue;
  * @author Daniel Majoinen
  * @version 1.0, 1/6/17
  */
-public class IntegerSortableListSelectionSorterTest extends IntegerSortableListTest {
+public class IntegerSelectionSorterTest extends IntegerSortableListTest {
 
     private SortableList<Integer> list;
-    private SortableListSelectionSorter<Integer> sorter;
+    private SelectionSorter<Integer> sorter;
 
     @Before
     public void beforeEachTest() {
         list = new SortableArrayList<>(INT_LIST_1_TO_5);
-        sorter = new SortableListSelectionSorter<>();
+        sorter = new SelectionSorter<>();
     }
 
     @Test
