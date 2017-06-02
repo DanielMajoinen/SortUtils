@@ -19,4 +19,14 @@ public class ReverseComparator<T extends Comparable<T>> implements
         else
             return 0;
     }
+
+    @Override
+    public ReverseComparator<T> reversed() {
+        return new ReverseComparator<T>() {
+            @Override
+            public int compare(T a, T b) {
+                return a.compareTo(b);
+            }
+        };
+    }
 }
