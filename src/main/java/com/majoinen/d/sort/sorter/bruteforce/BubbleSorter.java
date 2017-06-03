@@ -44,13 +44,13 @@ public class BubbleSorter<T extends Comparable<T>> extends
       Comparator<T> comparator) {
         // Loop through all elements, stopping at previously sorted elements
         for (int i = 0; i < list.size() - 1 - iteration; i++) {
-            // Swap when next element is smaller than current
+            // Swap when the current element is larger than the next
             if(greaterThan(list.get(i), list.get(i + 1), comparator)) {
                 Collections.swap(list, i, i + 1);
             }
         }
         // Stop at n - 2 iterations, where n is the size of input
-        // Note: iteration count is zero-based, hence the + 1
-        return iteration + 1 == list.size() - 2;
+        // Note: iteration count is zero-based
+        return iteration == list.size() - 2;
     }
 }
