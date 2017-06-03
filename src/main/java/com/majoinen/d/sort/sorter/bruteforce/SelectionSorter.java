@@ -32,8 +32,7 @@ public class SelectionSorter<T extends Comparable<T>> extends
      * @param iteration The current iteration count.
      * @param list The list of data to sort.
      * @param comparator An optional comparator to define order.
-     * @return As there is no early termination ability, this always returns
-     \ FALSE.
+     * @return This returns TRUE at n - 2 iterations, or FALSE otherwise.
      */
     @Override
     public boolean singleIteration(int iteration, SortableList<T> list,
