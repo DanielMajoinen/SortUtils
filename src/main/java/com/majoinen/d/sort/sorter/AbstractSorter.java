@@ -105,9 +105,42 @@ public abstract class AbstractSorter<T extends Comparable<T>> implements
      * @return Returns TRUE if a compares to greater than b, or FALSE otherwise.
      */
     protected boolean greaterThan(T a, T b, Comparator<T> comparator) {
+        return compare(a, b, comparator) > 0;
+    }
+
+    /**
+     * Helper method to compare two objects, with or without a comparator.
+     * @param a The first object to compare.
+     * @param b The second object to compare.
+     * @param comparator The optional comparator to define the comparison.
+     * @return Returns TRUE if a compares to less than b, or FALSE otherwise.
+     */
+    protected boolean lessThan(T a, T b, Comparator<T> comparator) {
+        return compare(a, b, comparator) < 0;
+    }
+
+    /**
+     * Helper method to compare two objects, with or without a comparator.
+     * @param a The first object to compare.
+     * @param b The second object to compare.
+     * @param comparator The optional comparator to define the comparison.
+     * @return Returns TRUE if a and b are equal, or FALSE otherwise.
+     */
+    protected boolean areEqual(T a, T b, Comparator<T> comparator) {
+        return compare(a, b, comparator) == 0;
+    }
+
+    /**
+     * Helper method for above comparison methods.
+     * @param a The first object to compare.
+     * @param b The second object to compare with.
+     * @param comparator The optional comparator to define the comparison.
+     * @return Returns the result of the comparison, in int format.
+     */
+    private int compare(T a, T b, Comparator<T> comparator) {
         if(comparator != null)
-            return comparator.compare(a, b) > 0;
+            return comparator.compare(a, b);
         else
-            return a.compareTo(b) > 0;
+            return a.compareTo(b);
     }
 }
