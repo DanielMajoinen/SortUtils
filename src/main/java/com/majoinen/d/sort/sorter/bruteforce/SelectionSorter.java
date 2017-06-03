@@ -43,19 +43,8 @@ public class SelectionSorter<T extends Comparable<T>> extends
 
         // Loop over all elements not already sorted, searching for smallest
         for(int i = iteration; i < list.size(); i++) {
-            // If a comparator was provided, use it to order
-            if(comparator != null) {
-                if(comparator.compare(list.get(i),
-                  list.get(smallestIndex)) < 0) {
-                    smallestIndex = i;
-                }
-            }
-            // If no comparator was specified, use the list objects compare
-            // method to order (T extends Comparable<T>)
-            else {
-                if(list.get(i).compareTo(list.get(smallestIndex)) < 0) {
-                    smallestIndex = i;
-                }
+            if(lessThan(list.get(i), list.get(smallestIndex), comparator)) {
+                smallestIndex = i;
             }
         }
 
@@ -63,6 +52,8 @@ public class SelectionSorter<T extends Comparable<T>> extends
         if(smallestIndex != iteration) {
             Collections.swap(list, smallestIndex, iteration);
         }
-        return false;
+        // Stop at n - 2 iterations, where n is the size of input
+        // Note: iteration count is zero-based
+        return iteration == list.size() - 2;
     }
 }
