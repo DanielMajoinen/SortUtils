@@ -39,7 +39,7 @@ public abstract class AbstractSorter<T extends Comparable<T>> implements
      */
     @Override
     public void sort(SortableList<T> list) {
-        sort(list.size(), list, null);
+        sort(-1, list, null);
     }
 
     /**
@@ -49,7 +49,7 @@ public abstract class AbstractSorter<T extends Comparable<T>> implements
      */
     @Override
     public void sort(SortableList<T> list, Comparator<T> comparator) {
-        sort(list.size(), list, comparator);
+        sort(-1, list, comparator);
     }
 
     /**
@@ -83,8 +83,11 @@ public abstract class AbstractSorter<T extends Comparable<T>> implements
         }
 
         // Loop for desired iteration count, unless early termination
-        for(int iteration = 0; iteration < totalIterations; iteration++) {
-            if(singleIteration(iteration, list, c))
+        // NOTE: Using while instead of a for loop to allow -1
+        // totalIterations as a parameter for sorting until complete.
+        int iteration = 0;
+        while(iteration != totalIterations) {
+            if(singleIteration(iteration++, list, c))
                 break;
         }
     }
