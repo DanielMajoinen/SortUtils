@@ -52,16 +52,28 @@ public class ShellSorter<T extends Comparable<T>> extends
                 // Determine index with delta applied
                 int k = (j * gap) + i;
                 // Apply insertion sort on sub-array
-                while (k >= 0 && k + gap <= list.size() - 1) {
-                    if(greaterThan(list.get(k), list.get(k+gap), comparator))
-                        Collections.swap(list, k, k+gap);
-                    k -= gap;
-                }
+                insertionSortSubarray(k, gap, list, comparator);
             }
         }
         // Terminate when gap size has been reduced to 1
         // At this point Insertion sort has been applied
         return gap == 1;
+    }
+
+    /**
+     * Helper method to apply insertion sort on a subarray.
+     * @param i A index for all elements up to, and including, are sorted.
+     * @param gap The gap between elements in the subarray.
+     * @param list The list of data to sort.
+     * @param comparator An optional comparator to define order.
+     */
+    private void insertionSortSubarray(int i, int gap, SortableList<T> list,
+      Comparator<T> comparator) {
+        while (i >= 0 && i + gap <= list.size() - 1) {
+            if(greaterThan(list.get(i), list.get(i + gap), comparator))
+                Collections.swap(list, i, i + gap);
+            i -= gap;
+        }
     }
 
     /**
@@ -73,7 +85,7 @@ public class ShellSorter<T extends Comparable<T>> extends
         int gap = 1;
         while(gap <= size / 3) {
             gaps.add(0, gap);
-            gap = (3 * gap + 1);
+            gap = 3 * gap + 1;
         }
     }
 }
