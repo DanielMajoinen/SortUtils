@@ -14,6 +14,8 @@ import java.util.Comparator;
 public abstract class AbstractSorter<T extends Comparable<T>> implements
   Sorter<T> {
 
+    protected static final int FIRST_ITERATION = 0;
+
     private Comparator<T> defaultComparator;
 
     public AbstractSorter() { }
