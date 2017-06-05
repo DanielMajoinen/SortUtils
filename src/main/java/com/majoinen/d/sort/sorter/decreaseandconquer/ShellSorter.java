@@ -67,8 +67,9 @@ public class ShellSorter<T extends Comparable<T>> extends
      * @param list The list of data to sort.
      * @param comparator An optional comparator to define order.
      */
-    private void insertionSortSubarray(int i, int gap, SortableList<T> list,
+    private void insertionSortSubarray(int index, int gap, SortableList<T> list,
       Comparator<T> comparator) {
+        int i = index;
         while (i >= 0 && i + gap <= list.size() - 1) {
             if(greaterThan(list.get(i), list.get(i + gap), comparator))
                 Collections.swap(list, i, i + gap);
