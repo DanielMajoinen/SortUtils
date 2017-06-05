@@ -47,7 +47,8 @@ public class ShellSorter<T extends Comparable<T>> extends
         // Iterate over elements between gap size - the delta
         for (int i = 0; i < gap; i++) {
             // To sort for this gap size we require n / gap sub-iterations
-            for (int j = 0; j < list.size() / gap; j++) {
+            for (int j = 0; j < list.size()
+              && ((j * gap) + i) <= list.size() - 1; j++) {
                 // Determine index with delta applied
                 int k = (j * gap) + i;
                 // Apply insertion sort on sub-array
