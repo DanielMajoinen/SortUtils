@@ -131,3 +131,4 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 # End of https://www.gitignore.io/api/java,macos,gradle,intellij
+!/src/main/java/com/majoinen/d/sort/sorter/decreaseandconquer/InsertionSorter.java
